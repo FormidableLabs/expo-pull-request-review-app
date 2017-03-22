@@ -18,6 +18,8 @@
   Automatically Deploy Pull Requests for Create React Native App and Expo
 </h4>
 
+<img src="docs/demo.gif" alt="demo" width="600"></img>
+
 ***
 
 **appr builds and deploys pull requests** in your [create-react-native-app](https://github.com/react-community/create-react-native-app) (and other [Expo](https://expo.io/)-based) projects, and replies with a link you can open directly on your device or emulator.
