@@ -17,8 +17,9 @@
 <h4 align="center">
   Automatically Deploy Pull Requests for Create React Native App and Expo
 </h4>
-
-<img src="docs/demo.gif" alt="demo" width="600"></img>
+<p align="center">
+  <img src="docs/demo.gif" alt="demo" width="600"></img>
+</p>
 
 ***
 
