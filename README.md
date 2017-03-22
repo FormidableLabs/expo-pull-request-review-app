@@ -1,6 +1,6 @@
 <h1 align="center">appr</h1>
 <p align="center">
-  <a title='License' href="https://raw.githubusercontent.com/FormidableLabs/appr/master/LICENSE">
+  <a title='License' href="https://raw.githubusercontent.com/FormidableLabs/appr/master/LICENSE" height="18">
     <img src='https://img.shields.io/badge/license-MIT-blue.svg' />
   </a>
   <a href="https://badge.fury.io/js/appr">
