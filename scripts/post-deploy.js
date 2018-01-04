@@ -16,7 +16,7 @@ export default function postDeploy() {
   :shipit: This branch has been deployed to:
   ${expUrl}
 
-  Download the [Expo](https://expo.io/) app and scan this QR code to get started!
+  Download the [Expo](https://expo.io/) app and scan this QR code to get started!!
 
   ![QR Code](${qrUrl})
   `;
