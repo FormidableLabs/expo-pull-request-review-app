@@ -1,10 +1,14 @@
+import configCircle from './config/circle';
+import configTravis from './config/travis';
+import configDefault from './config/default';
+
 let config;
 if (process.env.TRAVIS === 'true') {
-  config = require('./config/travis');
+  config = configTravis;
 } else if (process.env.CIRCLECI === 'true') {
-  config = require('./config/circle');
+  config = configCircle;
 } else {
-  config = require('./config/default');
+  config = configDefault;
 }
 
 for (const key in config) {
@@ -21,4 +25,4 @@ for (const key in config) {
   }
 }
 
-module.exports = config;
+export default { ...config };

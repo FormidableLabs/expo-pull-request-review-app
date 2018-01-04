@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   expUsername: process.env.EXP_USERNAME,
   expPassword: process.env.EXP_PASSWORD,
   githubUsername: process.env.GITHUB_USERNAME,

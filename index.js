@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
-const spawn = require('./scripts/spawn');
-const config = require('./scripts/config');
-const log = require('./scripts/log');
-const preDeploy = require('./scripts/pre-deploy');
-const postDeploy = require('./scripts/post-deploy');
-const localExp = './node_modules/exp/bin/exp.js';
+import localExp from 'exp';
+import spawn from './scripts/spawn';
+import config from './scripts/config';
+import log from './scripts/log';
+import preDeploy from './scripts/pre-deploy';
+import postDeploy from './scripts/post-deploy';
+
 log('Logging into Expo...');
 spawn(localExp, ['login', '-u', config.expUsername, '-p', config.expPassword, '--non-interactive'], loginError => {
   if (loginError) {

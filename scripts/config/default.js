@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   // exponent username for publishing
   expUsername: process.env.EXP_USERNAME,
 

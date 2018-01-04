@@ -1,30 +1,36 @@
-const utils = require('./utils');
-const config = require('./config');
+import {
+    readPackageJSON,
+    getExpPublishName,
+    writePackageJSON,
+    readAppJSON,
+    writeAppJSON
+} from './utils';
+import config from './config';
 
-module.exports = function preDeploy() {
-  const pkg = utils.readPackageJSON();
-  const name = utils.getExpPublishName(pkg.name, config.githubSourceBranch);
+export default function preDeploy() {
+  const pkg = readPackageJSON();
+  const name = getExpPublishName(pkg.name, config.githubSourceBranch);
   const modified = Object.assign({}, pkg, {
     name,
     privacy: 'unlisted'
   });
 
-  utils.writePackageJSON(modified);
+  writePackageJSON(modified);
 
-  let app = utils.readAppJSON();
+  let app = readAppJSON();
   if (app.expo) {
-    app.expo = Object.assign({}, app.expo, {
+    app.expo = { ...app.expo,
       name,
       slug: name,
       privacy: 'unlisted'
-    });
+    };
   } else {
-    app = Object.assign({}, app, {
+    app = { ...app,
       name,
       slug: name,
       privacy: 'unlisted'
-    });
+    };
   }
 
-  utils.writeAppJSON(app);
-};
+  writeAppJSON(app);
+}

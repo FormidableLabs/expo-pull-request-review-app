@@ -1,29 +1,21 @@
-const fs = require('fs');
+import fs from 'fs';
 
-function getExpPublishName(packageName, branchName) {
+export function getExpPublishName(packageName, branchName) {
   return `${packageName}-${branchName}`.replace(/[^a-zA-Z0-9\\-]/, '-');
 }
 
-function readPackageJSON() {
+export function readPackageJSON() {
   return JSON.parse(fs.readFileSync('./package.json'));
 }
 
-function writePackageJSON(content) {
+export function writePackageJSON(content) {
   fs.writeFileSync('./package.json', JSON.stringify(content, null, 2));
 }
 
-function readAppJSON() {
+export function readAppJSON() {
   return JSON.parse(fs.readFileSync('./app.json'));
 }
 
-function writeAppJSON(content) {
+export function writeAppJSON(content) {
   fs.writeFileSync('./app.json', JSON.stringify(content, null, 2));
 }
-
-module.exports = {
-  getExpPublishName,
-  readPackageJSON,
-  writePackageJSON,
-  readAppJSON,
-  writeAppJSON
-};

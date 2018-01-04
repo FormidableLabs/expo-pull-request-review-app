@@ -1,9 +1,10 @@
-const request = require('request');
-const utils = require('./utils');
-const config = require('./config');
-const log = require('./log');
-module.exports = function postDeploy() {
-  const expUrl = `https://expo.io/@${config.expUsername}/${utils.readPackageJSON().name}`;
+import request from 'request';
+import { readPackageJSON } from './utils';
+import config from './config';
+import log from './log';
+
+export default function postDeploy() {
+  const expUrl = `https://expo.io/@${config.expUsername}/${readPackageJSON().name}`;
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${expUrl}`;
   const issueUrl = `https://${config.githubUsername}:${config.githubToken}@api.github.com/repos/${config.githubOrg}/${config.githubRepo}/issues/${config.githubPullRequestId}/comments`;
 
@@ -15,7 +16,7 @@ module.exports = function postDeploy() {
   :shipit: This branch has been deployed to:
   ${expUrl}
 
-  Download the [Expo](https://expo.io/) app and scan this QR code to get started!
+  Download the [Expo](https://expo.io/) app and scan this QR code to get started!!
 
   ![QR Code](${qrUrl})
   `;
@@ -36,4 +37,4 @@ module.exports = function postDeploy() {
       }
     }
   );
-};
+}
