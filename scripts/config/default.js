@@ -25,5 +25,8 @@ module.exports = {
   githubSourceBranch: process.env.GITHUB_SOURCE_BRANCH,
 
   // pull request number, e.g. 123
-  githubPullRequestId: process.env.GITHUB_PR_NUMBER
+  githubPullRequestId: process.env.GITHUB_PR_NUMBER,
+
+  // environment you want to deploy to. Defaults to production as expo expects
+  deployEnv: process.env.DEPLOY_ENV || 'production'
 };
