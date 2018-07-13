@@ -2,7 +2,7 @@ const fs = require('fs');
 const config = require('./config');
 
 function getSafeName(name) {
-  return `${name}`.replace(/[^a-zA-Z0-9\\-]/, '-');
+  return `${name}`.replace(/[^a-zA-Z0-9\\-]/g, '-');
 }
 
 function getExpChannelName() {
