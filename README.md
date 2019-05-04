@@ -154,20 +154,19 @@ You should now be able to create a new branch, make changes, and open a pull req
 
 #### Add circle.yml to your project
 
-Add the following to your `circle.yml`:
+Add the following to your `.circleci/config.yml`:
 
 ```yml
-dependencies:
-  override:
-    - yarn
-machine:
-  node:
-    version: 6.9
-deployment:
-  appr:
-    branch: /.*/
-    commands:
-      - 'if [ "$CI_PULL_REQUEST" != "" ]; then yarn appr; fi'
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8
+
+    steps:
+      - checkout
+      - run: yarn install
+      - run: 'if [ "$CIRCLE_PULL_REQUEST" != "" ]; then yarn appr; fi'
 ```
 
 This will configure your Circle build to use the latest Node.js and Yarn (optional), and ensure that the **appr** build only runs on Pull Request builds.
@@ -177,22 +176,18 @@ This will configure your Circle build to use the latest Node.js and Yarn (option
 You may also want to automatically push some target branches, e.g. your `develop` or `master` branches to a release channel to test your integrated code. In that case, you can whitelist the branches to release in your `circle.yml`:
 
 ```yml
-deployment:
-  appr:
-    branch: /.*/
-    commands:
-      - 'if [ "$CI_PULL_REQUEST" != "" ] || [ "$CIRCLE_BRANCH" == "master" ]; then yarn appr; fi'
+steps:
+  - checkout
+  - run: yarn install
+  - run: 'if [ "$CI_PULL_REQUEST" != "" ] || [ "$CIRCLE_BRANCH" == "master" ]; then yarn appr; fi'
 ```
 
 #### (Optional) Running tests
 
-Circle CI will automatically run your tests before the deployment. Note that the default `test` command in `create-react-native-app` runs Jest in `--watch` mode, which will hang forever. You can either change the
-`test` script in your package.json, or, or override the test command in circle.yml:
+Add the followiong line to your `steps` in `.circleci/config.yml`(default `test` command in `create-react-native-app` runs jest).
 
 ```yml
-test:
-  override:
-    - yarn ci-test-command
+- run: yarn test
 ```
 
 #### Enable Circle CI
